@@ -32,7 +32,7 @@ export default function CurrencyLogo({
     <StyledLogo
       size={size}
       native={currency?.isNative ?? false}
-      srcs={logoURIs}
+      srcs={['https://game-icons.net/icons/000000/ffffff/1x1/caro-asercion/capybara.png']}
       alt={`${currency?.symbol ?? 'token'} logo`}
       style={style}
       {...rest}

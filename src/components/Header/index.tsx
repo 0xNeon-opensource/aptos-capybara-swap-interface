@@ -271,12 +271,11 @@ export default function Header() {
     <HeaderFrame showBackground={scrollY > 45}>
       <ClaimModal />
       <Title href=".">
-        <div style={{ height: '85px', width: '85px' }}>
-          <UniIcon>
-            <Logo fill={darkMode ? white : black} width="24px" height="100%" title="logo" />
-            <HolidayOrnament />
-          </UniIcon>
-        </div>
+        <UniIcon>
+          <Logo fill={darkMode ? white : black} width="24px" height="100%" title="logo" />
+          <HolidayOrnament />
+        </UniIcon>
+        <h1 style={{ color: 'white', textDecoration: 'none', marginLeft: '10px' }}>Capybara Swap</h1>
       </Title>
       <div></div>
       {/* <HeaderLinks>
