@@ -51,9 +51,9 @@ export const CHAIN_INFO: ChainInfoMap = {
     docs: 'https://docs.uniswap.org/',
     explorer: 'https://etherscan.io/',
     infoLink: 'https://info.uniswap.org/#/',
-    label: 'Ethereum',
-    logoUrl: ethereumLogoUrl,
-    nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
+    label: 'Aptos',
+    logoUrl: 'https://pbs.twimg.com/profile_images/1496688009659437060/RJ3jNg76_400x400.jpg',
+    nativeCurrency: { name: 'Aptos', symbol: 'APTOS', decimals: 18 },
   },
   [SupportedChainId.RINKEBY]: {
     networkType: NetworkType.L1,

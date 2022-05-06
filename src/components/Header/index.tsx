@@ -14,7 +14,7 @@ import { useDarkModeManager } from 'state/user/hooks'
 import { useNativeCurrencyBalances } from 'state/wallet/hooks'
 import styled from 'styled-components/macro'
 
-import { ReactComponent as Logo } from '../../assets/svg/logo.svg'
+import { ReactComponent as Logo } from '../../assets/svg/capybara.svg'
 import { ExternalLink, ThemedText } from '../../theme'
 import ClaimModal from '../claim/ClaimModal'
 import { CardNoise } from '../earn/styled'
@@ -271,12 +271,15 @@ export default function Header() {
     <HeaderFrame showBackground={scrollY > 45}>
       <ClaimModal />
       <Title href=".">
-        <UniIcon>
-          <Logo fill={darkMode ? white : black} width="24px" height="100%" title="logo" />
-          <HolidayOrnament />
-        </UniIcon>
+        <div style={{ height: '85px', width: '85px' }}>
+          <UniIcon>
+            <Logo fill={darkMode ? white : black} width="24px" height="100%" title="logo" />
+            <HolidayOrnament />
+          </UniIcon>
+        </div>
       </Title>
-      <HeaderLinks>
+      <div></div>
+      {/* <HeaderLinks>
         <StyledNavLink id={`swap-nav-link`} to={'/swap'}>
           <Trans>Swap</Trans>
         </StyledNavLink>
@@ -302,7 +305,7 @@ export default function Header() {
           <Trans>Charts</Trans>
           <sup>↗</sup>
         </StyledExternalLink>
-      </HeaderLinks>
+      </HeaderLinks> */}
 
       <HeaderControls>
         <HeaderElement>

@@ -2,7 +2,7 @@
 import { t, Trans } from '@lingui/macro'
 import { Connector } from '@web3-react/types'
 import { darken } from 'polished'
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { Activity } from 'react-feather'
 import styled, { css } from 'styled-components/macro'
 import { AbstractConnector } from 'web3-react-abstract-connector'
@@ -140,9 +140,10 @@ function WrappedStatusIcon({ connector }: { connector: AbstractConnector | Conne
 }
 
 function Web3StatusInner() {
-  const { account, connector, error } = useWeb3React()
+  const [account, setAccount] = useState<string>()
+  const { connector, error } = useWeb3React()
 
-  const { ENSName } = useENSName(account ?? undefined)
+  const ENSName = undefined
 
   const allTransactions = useAllTransactions()
 
@@ -157,24 +158,46 @@ function Web3StatusInner() {
   const hasSocks = useHasSocks()
   const toggleWalletModal = useWalletModalToggle()
 
+  const connectAptosWallet = async () => {
+    console.log('connecting aptos wallet...')
+    const newAccount = await (window as any).aptos?.account()
+    console.log('newAccount :>> ', newAccount)
+
+    setAccount(newAccount)
+    // // Create a transaction dictionary
+    // const transaction = {
+    //   type: 'script_function_payload',
+    //   function: '0x1::TestCoin::transfer',
+    //   type_arguments: [],
+    //   arguments: ['53497b76512125d4ab679c330e48f28c5c20991357cb7d43a9316fee3dbcd626', 10000],
+    // }
+
+    // // Send transaction to the extension to be signed and submitted to chain
+    // const response = await (window as any).aptos.signAndSubmitTransaction(transaction)
+
+    // console.log('response :>> ', response)
+  }
+
   if (account) {
     return (
-      <Web3StatusConnected id="web3-status-connected" onClick={toggleWalletModal} pending={hasPendingTransactions}>
-        {hasPendingTransactions ? (
-          <RowBetween>
-            <Text>
-              <Trans>{pending?.length} Pending</Trans>
-            </Text>{' '}
-            <Loader stroke="white" />
-          </RowBetween>
-        ) : (
-          <>
-            {hasSocks ? <Sock /> : null}
-            <Text>{ENSName || shortenAddress(account)}</Text>
-          </>
-        )}
-        {!hasPendingTransactions && connector && <WrappedStatusIcon connector={connector} />}
-      </Web3StatusConnected>
+      <div>
+        <Web3StatusConnected id="web3-status-connected" pending={hasPendingTransactions}>
+          {hasPendingTransactions ? (
+            <RowBetween>
+              <Text>
+                <Trans>{pending?.length} Pending</Trans>
+              </Text>{' '}
+              <Loader stroke="white" />
+            </RowBetween>
+          ) : (
+            <>
+              {hasSocks ? <Sock /> : null}
+              <Text>{ENSName || shortenAddress(account)}</Text>
+            </>
+          )}
+          {!hasPendingTransactions && connector && <WrappedStatusIcon connector={connector} />}
+        </Web3StatusConnected>
+      </div>
     )
   } else if (error) {
     return (
@@ -185,7 +208,7 @@ function Web3StatusInner() {
     )
   } else {
     return (
-      <Web3StatusConnect id="connect-wallet" onClick={toggleWalletModal} faded={!account}>
+      <Web3StatusConnect id="connect-wallet" onClick={connectAptosWallet} faded={!account}>
         <Text>
           <Trans>Connect Wallet</Trans>
         </Text>
