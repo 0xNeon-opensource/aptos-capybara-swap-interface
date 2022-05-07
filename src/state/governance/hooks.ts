@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { defaultAbiCoder, Interface } from '@ethersproject/abi'
 import { isAddress } from '@ethersproject/address'
 import { Contract } from '@ethersproject/contracts'

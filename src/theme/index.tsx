@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { useMemo } from 'react'
 import { Text, TextProps as TextPropsOriginal } from 'rebass'
 import styled, {

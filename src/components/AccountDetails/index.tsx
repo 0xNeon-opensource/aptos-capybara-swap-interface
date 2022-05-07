@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { Trans } from '@lingui/macro'
 import { Connector } from '@web3-react/types'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'

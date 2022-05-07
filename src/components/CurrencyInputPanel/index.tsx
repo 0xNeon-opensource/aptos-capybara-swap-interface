@@ -258,7 +258,7 @@ export default function CurrencyInputPanel({
                   </StyledTokenName>
                 ) : (
                   <StyledTokenName className="token-symbol-container" active={Boolean(currency && currency.symbol)}>
-                    {currency?.symbol === 'ETH' ? 'CAPY' : 'cUSD'}
+                    {currency?.symbol === 'ETH' ? 'CAPY' : 'BARA'}
                   </StyledTokenName>
                 )}
               </RowFixed>
